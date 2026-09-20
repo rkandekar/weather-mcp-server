@@ -7,6 +7,20 @@ An [MCP](https://modelcontextprotocol.io) server, written in Python, that gives 
 
 No API key or account is required. Weather and geocoding data come from [Open-Meteo](https://open-meteo.com), which is free for non-commercial use without registration.
 
+## Quick start
+
+Start the server (used when wiring it into an MCP client like Claude Desktop; it just waits on stdio):
+
+```bash
+uv run python -m weather_mcp.server
+```
+
+Call it (spins up its own server subprocess, calls all 3 tools, prints results — no separate start step needed):
+
+```bash
+uv run python scripts/manual_client.py "Austin, TX"
+```
+
 ## Architecture
 
 ```
