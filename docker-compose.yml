@@ -1,0 +1,10 @@
+# MCP servers talk JSON-RPC over stdio, not a network port, so `docker compose up`
+# is mainly convenient for building the image and doing a manual sanity check
+# with `docker compose run --rm weather-mcp`. Point real MCP clients (Claude
+# Desktop, the inspector, your own scripts) at `docker run -i weather-mcp-server`
+# directly, per the README, rather than at this compose service.
+services:
+  weather-mcp:
+    build: .
+    stdin_open: true
+    tty: false
